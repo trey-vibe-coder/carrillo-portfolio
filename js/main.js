@@ -25,9 +25,12 @@ function startHomeNudges() {
     homeNudgeTimers.push(setTimeout(function() { doNudge(2); }, 13000));
 }
 
+var _skipHistoryPush = false;
+
 function showHome() {
     hideAllViews();
     document.getElementById('home-view').style.display = 'flex';
+    if (!_skipHistoryPush) history.pushState(null, '', '#home');
     document.addEventListener('click', function(e) {
     var linkEl = e.target.closest('[data-href]');
     if (linkEl) { window.open(linkEl.getAttribute('data-href'), '_blank'); }
@@ -38,6 +41,7 @@ startHomeNudges();
 function showPortfolio() {
     hideAllViews();
     document.getElementById('portfolio-view').style.display = 'block';
+    if (!_skipHistoryPush) history.pushState(null, '', '#portfolio');
     var icons = document.querySelectorAll('.desktop-icon, .desktop-title, .desktop-subtitle');
     icons.forEach(function(icon) {
         icon.style.animation = 'none';
@@ -52,6 +56,7 @@ var funClicked = false;
 function showFun() {
     hideAllViews();
     document.getElementById('fun-view').style.display = 'block';
+    if (!_skipHistoryPush) history.pushState(null, '', '#fun');
     var popup = document.getElementById('funPopup');
     if (popup) popup.style.display = 'flex';
     funClicked = false;
@@ -73,6 +78,7 @@ function showFun() {
 function showFunList() {
     hideAllViews();
     document.getElementById('fun-list-view').style.display = 'flex';
+    if (!_skipHistoryPush) history.pushState(null, '', '#funlist');
 }
 
 function closeFunPopup() {
@@ -84,6 +90,7 @@ function showAbout() {
     hideAllViews();
     var about = document.getElementById('about-view');
     if (about) about.style.display = 'block';
+    if (!_skipHistoryPush) history.pushState(null, '', '#about');
     window.scrollTo(0, 0);
 }
 
@@ -112,6 +119,23 @@ document.addEventListener('click', function(e) {
         else if (action === 'openSummary') { var so = document.getElementById('summaryOverlay'); if (so) so.classList.add('show'); }
         else if (action === 'closeSummary') { var so = document.getElementById('summaryOverlay'); if (so) so.classList.remove('show'); }
         else if (action === 'closeRickroll') { var rp = document.getElementById('rickrollPopup'); if (rp) rp.style.display = 'none'; }
+        else if (action === 'toggleCourses') {
+            var container = document.getElementById('coursesContainer');
+            var star = document.getElementById('coursesToggleStar');
+            if (container) container.classList.toggle('open');
+            if (star) {
+                star.classList.remove('spin-once');
+                star.offsetHeight;
+                star.classList.add('spin-once');
+            }
+        }
+        return;
+    }
+
+    // Folder click (single click — task 5)
+    var folderEl = e.target.closest('[data-folder]');
+    if (folderEl) {
+        openFolder(folderEl.getAttribute('data-folder'));
         return;
     }
 
@@ -125,13 +149,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Folder double-click
-document.addEventListener('dblclick', function(e) {
-    var folderEl = e.target.closest('[data-folder]');
-    if (folderEl) {
-        openFolder(folderEl.getAttribute('data-folder'));
-    }
-});
 
 // === FINDER LOGIC ===
 var projects = {
@@ -242,12 +259,23 @@ updateClock();
 setInterval(updateClock, 30000);
 
 startHomeNudges();
-document.addEventListener('keydown', function(e) { 
-    if (e.key === 'Escape') { 
-        closeFolder(); 
-        var so = document.getElementById('summaryOverlay'); 
-        if (so) so.classList.remove('show'); 
-    } 
+history.replaceState(null, '', '#home');
+window.addEventListener('popstate', function() {
+    _skipHistoryPush = true;
+    var hash = location.hash;
+    if (hash === '#portfolio') showPortfolio();
+    else if (hash === '#fun') showFun();
+    else if (hash === '#funlist') showFunList();
+    else if (hash === '#about') showAbout();
+    else showHome();
+    _skipHistoryPush = false;
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeFolder();
+        var so = document.getElementById('summaryOverlay');
+        if (so) so.classList.remove('show');
+    }
 });
 document.getElementById('summaryOverlay').addEventListener('click', function(e) {
     if (e.target === this) this.classList.remove('show');
