@@ -46,12 +46,9 @@ export default function About() {
               <a href="https://undergraduates.utexas.edu/academics/bridging-disciplines-programs" target="_blank" rel="noopener noreferrer" className="pill-orange">BDP</a>
             </div>
             <div className="pill-group">
-              <div className="pill-grey">SQL</div><div className="pill-grey">Python</div><div className="pill-grey">R</div>
-              <div className="pill-grey">Google Colab</div><div className="pill-grey">Tableau</div><div className="pill-grey">Hubspot</div>
-              <div className="pill-grey">Figma</div><div className="pill-grey">Canva</div><div className="pill-grey">Microsoft</div>
-              <div className="pill-grey">Asana</div><div className="pill-grey">Meltwater</div><div className="pill-grey">GMS</div>
-              <div className="pill-grey">Brandwatch</div><div className="pill-grey">Claude Code</div><div className="pill-grey">Gemini</div>
-              <div className="pill-grey">ChatGPT</div><div className="pill-grey">Perplexity</div>
+              {['SQL','Python','R','R Studio','SPSS','Google Colab','Tableau','Excel','PowerPoint','Word','Google Sheets','Google Drive','Google Analytics (GA4)','Google Ads','Amazon Ads','SEO/SEM','HubSpot','Figma','Canva','Asana','Trello','Slack','Meltwater','GMS','Brandwatch','Sprout Social','Adobe Creative Suite','HTML','CSS','JavaScript','React','Node.js','Vite','Git','GitHub','Netlify','Google Stitch','Claude Code','Gemini','ChatGPT','Perplexity'].map(s => (
+                <div key={s} className="pill-grey">{s}</div>
+              ))}
             </div>
 
             <div className="cert-section">
