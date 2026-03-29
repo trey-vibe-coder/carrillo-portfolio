@@ -82,6 +82,7 @@ export default function About() {
                 <span
                   ref={starRef}
                   className={`courses-star-btn${starSpin ? ' spin-once' : ''}`}
+                  style={{ color: '#eb34c0' }}
                   onAnimationEnd={handleStarAnimEnd}
                 >&#9733;</span>
                 <span className="courses-toggle-label">Coursework</span>
@@ -90,49 +91,49 @@ export default function About() {
                 <div className="course-group">
                   <div className="course-group-label">Marketing &amp; Advertising</div>
                   <div className="course-pills">
-                    {['Advanced Media Strategies','Advertising/PR Law & Ethics','Advertising/PR Media Planning','Advertising/PR Research','Digital Metrics','Integrated Communications Management','Intro to Advertising Creativity','Intro to Advertising/PR Research','Intro to Integrated Brand Comm','Marketing','Marketing Management (MS)','Media Investment','Psychology of Advertising'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['Advanced Media Strategies','Advertising/PR Law & Ethics','Advertising/PR Media Planning','Advertising/PR Research','Brand & Growth Strategy (MS)','Consumer Behavior (MS)','Digital Marketing & Measurement (MS)','Digital Metrics','Integrated Communications Management','Intro to Advertising Creativity','Intro to Advertising/PR Research','Intro to Integrated Brand Comm','Marketing','Marketing Management (MS)','Media Investment','Psychology of Advertising'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
                 <div className="course-group">
                   <div className="course-group-label">Analytics &amp; Data</div>
                   <div className="course-pills">
-                    {['Business Analytics','Statistics for Marketing (MS)','Digital Metrics'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['Business Analytics','Data Analysis (MS)','Data Analytics & Dynamic Pricing (MS)','Data Visualization & Storytelling (MS)','Market Data & Demand Modeling (MS)','Marketing Analytics I (MS)','Marketing Analytics II (MS)','Marketing Intelligence Capstone (MS)','SQL (MS)','Statistics for Marketing (MS)','Digital Metrics'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
                 <div className="course-group">
                   <div className="course-group-label">Business &amp; Finance</div>
                   <div className="course-pills">
-                    {['Financial Management (MS)','Foundations of Accounting','Foundations of Business Law & Ethics','Foundations of Finance','Foundations of Information Technology Management','Foundations of Management & Org Behavior','Global Entrepreneurship','Intro to Entrepreneurship','Intro to Entrepreneurship Mindset'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['Clients, Consulting, & Communication (MS)','Design Thinking (MS)','Financial Management (MS)','Foundations of Accounting','Foundations of Business Law & Ethics','Foundations of Finance','Foundations of Information Technology Management','Foundations of Management & Org Behavior','Global Entrepreneurship','Intro to Entrepreneurship','Intro to Entrepreneurship Mindset'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
                 <div className="course-group">
                   <div className="course-group-label">Communications &amp; Media</div>
                   <div className="course-pills">
-                    {['Interdisciplinary Comm Foundations','Intro to Comm Foundations','Media in Diverse Society'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['Interdisciplinary Comm Foundations','Intro to Comm Foundations','Media in Diverse Society'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
                 <div className="course-group">
                   <div className="course-group-label">Social Sciences &amp; Humanities</div>
                   <div className="course-pills">
-                    {['American Government','Federal Government','Philosophies of Life','Race and Medicine','U.S. History 1','U.S. History 2'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['American Government','Federal Government','Philosophies of Life','Race and Medicine','U.S. History 1','U.S. History 2'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
                 <div className="course-group">
                   <div className="course-group-label">Sciences &amp; Math</div>
                   <div className="course-pills">
-                    {['Applications of Modern Math','Earthquakes and Disasters','Fundamentals of Nutrition','Introductory Biology I','Principles of Chemistry I'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['Applications of Modern Math','Earthquakes and Disasters','Fundamentals of Nutrition','Introductory Biology I','Principles of Chemistry I'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
                 <div className="course-group">
                   <div className="course-group-label">Language</div>
                   <div className="course-pills">
-                    {['Elementary Spanish 1','Elementary Spanish 2','Intermediate Spanish','Intermediate Comp/Grammar','Intermediate Culture/Media','Intermediate Reading/Conversation'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['Elementary Spanish 1','Elementary Spanish 2','Intermediate Spanish','Intermediate Comp/Grammar','Intermediate Culture/Media','Intermediate Reading/Conversation'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
                 <div className="course-group">
                   <div className="course-group-label">General / Core</div>
                   <div className="course-pills">
-                    {['Bus Freshman Orientation','Composition 1','Composition 2','Intro to Economics','Transfer Intro Group'].map(c => <span key={c} className="course-pill">{c}</span>)}
+                    {['Bus Freshman Orientation','Composition 1','Composition 2','Intro to Economics','Transfer Intro Group'].map(c => <span key={c} className={c.includes('(MS)') ? 'course-pill-ms' : 'course-pill'}>{c}</span>)}
                   </div>
                 </div>
               </div>
