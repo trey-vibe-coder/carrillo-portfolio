@@ -6,6 +6,8 @@ export default function About() {
   const navigate = useNavigate();
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [starSpin, setStarSpin] = useState(false);
+  const [certsOpen, setCertsOpen] = useState(false);
+  const [certStarSpin, setCertStarSpin] = useState(false);
   const starRef = useRef(null);
 
   function toggleCourses() {
@@ -13,6 +15,14 @@ export default function About() {
     setStarSpin(false);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => setStarSpin(true));
+    });
+  }
+
+  function toggleCerts() {
+    setCertsOpen(prev => !prev);
+    setCertStarSpin(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setCertStarSpin(true));
     });
   }
 
@@ -45,7 +55,15 @@ export default function About() {
             </div>
 
             <div className="cert-section">
-              <div className="cert-section-heading">Certifications</div>
+              <div className="courses-toggle-row" onClick={toggleCerts}>
+                <span
+                  className={`courses-star-btn${certStarSpin ? ' spin-once' : ''}`}
+                  style={{ color: '#eb34c0' }}
+                  onAnimationEnd={() => setCertStarSpin(false)}
+                >&#9733;</span>
+                <span className="courses-toggle-label">Certifications</span>
+              </div>
+              <div className={`courses-container${certsOpen ? ' open' : ''}`}>
               <div className="cert-grid">
                 <div className="cert-card"><img className="cert-logo" src="https://www.google.com/favicon.ico" alt="Google"/><div className="cert-info"><div className="cert-name">Dive Deeper into GA4 Data and Reports</div><div className="cert-issuer">Google</div></div></div>
                 <div className="cert-card"><img className="cert-logo" src="https://www.hubspot.com/favicon.ico" alt="HubSpot"/><div className="cert-info"><div className="cert-name">Digital Marketing</div><div className="cert-issuer">HubSpot Academy</div></div></div>
@@ -60,6 +78,7 @@ export default function About() {
                 <div className="cert-card cert-expired"><img className="cert-logo" src="https://www.google.com/favicon.ico" alt="Google"/><div className="cert-info"><div className="cert-name">AI-Powered Shopping Ads Certification</div><div className="cert-issuer">Google</div></div><span className="cert-expired-badge">Expired</span></div>
                 <div className="cert-card cert-expired"><img className="cert-logo" src="https://www.google.com/favicon.ico" alt="Google"/><div className="cert-info"><div className="cert-name">Google Analytics Certification</div><div className="cert-issuer">Google</div></div><span className="cert-expired-badge">Expired</span></div>
                 <div className="cert-card cert-expired"><img className="cert-logo" src="https://www.google.com/favicon.ico" alt="Google"/><div className="cert-info"><div className="cert-name">Google Ads Search Certification</div><div className="cert-issuer">Google</div></div><span className="cert-expired-badge">Expired</span></div>
+              </div>
               </div>
 
               <div className="courses-toggle-row" onClick={toggleCourses}>
