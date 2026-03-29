@@ -432,3 +432,313 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
 .contact-role { font-size: 10px; color: #aaa; letter-spacing: 1px; margin-bottom: 5px; text-transform: uppercase; }
 .contact-email { color: #FDE300; font-size: 12px; font-weight: 700; text-decoration: none; display: block; margin-bottom: 20px; }
 .contact-email:hover { text-decoration: underline; }
+
+/* ============================================================
+   RESPONSIVE — Mobile First Fixes
+   ============================================================ */
+
+/* --- Touch targets: 44px minimum on all interactive elements --- */
+.home-nav-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.win95-close-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+}
+.about-back-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+.summary-close {
+    min-width: 44px;
+    min-height: 44px;
+}
+.about-hamburger {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Win95 rickroll: responsive width so it never overflows viewport --- */
+.win95-rickroll {
+    width: min(340px, 92vw);
+}
+
+/* ============================================================
+   BREAKPOINT: ≤ 768px (tablets + phones)
+   ============================================================ */
+@media (max-width: 768px) {
+    /* Finder window: give a little more vertical room */
+    .finder-window {
+        max-height: 88vh;
+    }
+
+    /* Summary overlay: ensure it's scrollable and padded */
+    .summary-overlay {
+        padding: 16px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+    .summary-card {
+        max-height: 90vh;
+    }
+    .summary-name {
+        font-size: 22px;
+    }
+
+    /* About page: cert grid always 1 column on tablet/mobile */
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Win95 buttons: bigger tap area */
+    .win95-btn {
+        padding: 10px 20px;
+        min-height: 44px;
+    }
+    .rickroll-btn {
+        padding: 10px 24px;
+        min-height: 44px;
+    }
+
+    /* Fun list: retro items need taller touch target */
+    .retro-list-item {
+        min-height: 56px;
+    }
+
+    /* Retro item title: keep readable */
+    .retro-item-title {
+        font-size: 16px;
+    }
+
+    /* About contact email: slightly larger tap link */
+    .contact-email {
+        font-size: 13px;
+        padding: 4px 0;
+    }
+}
+
+/* ============================================================
+   BREAKPOINT: ≤ 480px (phones)
+   ============================================================ */
+@media (max-width: 480px) {
+    /* Home: nav buttons — wrap tighter, smaller letter-spacing */
+    .home-nav-buttons {
+        gap: 8px;
+    }
+    .home-nav-btn {
+        padding: 10px 18px;
+        letter-spacing: 1px;
+        font-size: clamp(0.65rem, 3.5vw, 0.85rem);
+    }
+
+    /* Fun page: top buttons — shrink so they don't crowd each other */
+    .fun-back-btn {
+        font-size: 13px;
+        padding: 8px 10px;
+        max-width: calc(50% - 30px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .retro-btn {
+        font-size: 10px;
+        padding: 8px 10px;
+        letter-spacing: 0.5px;
+        max-width: calc(50% - 30px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* iMac desktop icons: tighter gap, slightly smaller folder */
+    .desktop-icons {
+        gap: 16px;
+    }
+    .folder-icon {
+        width: 65px;
+        height: 54px;
+    }
+    .folder-badge {
+        top: 18px;
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Finder: icon labels and file labels — bump up from sub-10px */
+    .icon-label {
+        font-size: 0.75rem;
+    }
+    .file-label {
+        font-size: 0.68rem;
+    }
+    .desktop-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    /* Finder content: tighter padding on small screens */
+    .finder-content {
+        padding: 14px;
+    }
+    .file-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 8px;
+    }
+
+    /* About: reduce pill sizes slightly for fit */
+    .pill-orange {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+    .pill-grey {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    /* Course pills: bump up from 11px */
+    .course-pill,
+    .course-pill-ms {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+
+    /* Course group label: bump up from 9px */
+    .course-group-label {
+        font-size: 10px;
+    }
+
+    /* Cert card: slightly increase name legibility */
+    .cert-name {
+        font-size: 13px;
+    }
+
+    /* About contact card: reduce internal padding */
+    .about-contact-card {
+        padding: 28px 16px;
+    }
+    .about-contact-card h2 {
+        font-size: 20px;
+    }
+    .contact-email {
+        font-size: 11px;
+        word-break: break-all;
+    }
+
+    /* Retro window: reduce box shadow so it doesn't clip */
+    .retro-window {
+        box-shadow: 4px 4px 0px #000;
+    }
+
+    /* Summary card body padding */
+    .summary-body {
+        padding: 16px;
+    }
+    .summary-name {
+        font-size: 20px;
+    }
+    .summary-tagline {
+        font-size: 12px;
+    }
+
+    /* Win95 popup body: more compact */
+    .win95-body {
+        padding: 14px;
+        gap: 14px;
+    }
+    .win95-text-content {
+        font-size: 13px;
+        padding: 14px;
+    }
+
+    /* Rickroll popup body */
+    .rickroll-body {
+        padding: 14px 12px;
+        gap: 12px;
+    }
+    .rickroll-msg {
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   BREAKPOINT: ≤ 390px (iPhone 14/SE range)
+   ============================================================ */
+@media (max-width: 390px) {
+    /* Poster container: reduce padding slightly */
+    .poster-container {
+        padding: 8px;
+    }
+
+    /* Home nav: single-column stack if very tight */
+    .home-nav-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 0 20px;
+    }
+    .home-nav-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Fun page: back button stays compact */
+    .fun-back-btn {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+    .retro-btn {
+        font-size: 9px;
+        padding: 7px 9px;
+    }
+
+    /* Desktop title: very slightly smaller */
+    .desktop-title {
+        font-size: clamp(1.1rem, 5vw, 1.4rem);
+    }
+
+    /* About topbar: prevent text overflow */
+    .about-topbar {
+        font-size: 13px;
+        padding: 12px 16px;
+    }
+
+    /* About back button */
+    .about-back-btn {
+        font-size: 11px;
+    }
+
+    /* Courses toggle label: shrink letter-spacing */
+    .courses-toggle-label {
+        letter-spacing: 1px;
+        font-size: 13px;
+    }
+
+    /* Cert grid: full width single column */
+    .cert-name {
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   BREAKPOINT: ≥ 1440px (large desktop)
+   ============================================================ */
+@media (min-width: 1440px) {
+    /* Home: give the poster a tiny bit more breathing room */
+    .poster-container {
+        padding: 16px;
+    }
+
+    /* Academic: slightly taller finder window */
+    .finder-window {
+        max-height: 75vh;
+    }
+}
