@@ -12,7 +12,7 @@ export function Win95Popup({ onClose }) {
           <span className="green-text">like cool $hiz?!</span> are you scrappy? email me at{' '}
           <a href={`mailto:${contact.scrappy}`} className="yellow-link">{contact.scrappy}</a>{' '}
           and let&rsquo;s chat.{' '}
-          <a href="https://www.reddit.com/r/salesforce/comments/xvr23e/if_your_ceo_called_you_scrappy_would_you_take_it/" target="_blank" rel="noopener noreferrer" className="white-link">urban dictionary</a>{' '}
+          <a href="https://www.reddit.com/r/salesforce/comments/xvr23e/if_your_ceo_called_you_scrappy_would_you_take_it/" target="_blank" rel="noopener noreferrer" className="white-link">reddit</a>{' '}
           <a href="https://www.google.com/search?q=scrappy+doo" target="_blank" rel="noopener noreferrer" className="white-link">scrappy</a>
         </div>
         <div className="win95-buttons">
