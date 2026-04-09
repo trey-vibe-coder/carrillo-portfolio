@@ -783,6 +783,15 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
     /* About: tighten vertical gap on desktop — mobile looks fine but desktop spreads too wide */
     .about-content { gap: 16px; }
     .about-container { padding: 20px 20px 40px 20px; }
+
+    /* About: scale up text on desktop — lots of room, small text is hard to read */
+    .pill-grey { font-size: 15px; padding: 7px 15px; }
+    .pill-orange { font-size: 15px; padding: 10px 20px; }
+    .about-bio { font-size: 19px; }
+    .courses-toggle-label { font-size: 17px; letter-spacing: 2px; }
+    .courses-star-btn { font-size: 30px; }
+    .about-star-link svg { width: 44px; }
+    .about-star-link span { font-size: 15px; }
 }
 
 @media (min-width: 1440px) {
