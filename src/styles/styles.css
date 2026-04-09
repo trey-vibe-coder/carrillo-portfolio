@@ -548,6 +548,17 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
         font-size: clamp(0.65rem, 3.5vw, 0.85rem);
     }
 
+    /* Fun page: scale down floating stars so they don't crowd the screen */
+    .floating-star { width: 85px; }
+    .size-trivia  { width: 55px; height: 55px; }
+    .size-creative{ width: 50px; height: 50px; }
+    .size-livewire{ width: 47px; height: 47px; }
+    .size-scrappy { width: 44px; height: 44px; }
+    .size-jung    { width: 38px; height: 38px; }
+    .size-pixie   { width: 33px; height: 33px; }
+    .size-insta   { width: 22px; height: 22px; }
+    .star-text    { font-size: 0.7rem; padding: 3px 6px; margin-top: 6px; }
+
     /* Fun page: top buttons — shrink so they don't crowd each other */
     .fun-back-btn {
         font-size: 13px;
@@ -740,6 +751,25 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
 /* ============================================================
    BREAKPOINT: ≥ 1440px (large desktop)
    ============================================================ */
+@media (min-width: 1024px) {
+    /* Fun: win95 popup — larger on desktop so it doesn't look tiny */
+    .win95-popup { max-width: 520px; }
+    .win95-text-content { font-size: 17px; padding: 22px; }
+    .win95-body { padding: 24px; gap: 22px; }
+
+    /* Fun list: retro window — more presence on desktop */
+    .retro-window { max-width: 760px; }
+    .retro-content { padding: 28px; gap: 18px; }
+    .retro-list-item { padding: 20px; }
+    .retro-item-title { font-size: 20px; }
+    .retro-item-desc { font-size: 15px; }
+    .retro-item-icon svg { width: 48px; height: 48px; }
+
+    /* About: tighten vertical gap on desktop — mobile looks fine but desktop spreads too wide */
+    .about-content { gap: 16px; }
+    .about-container { padding: 20px 20px 40px 20px; }
+}
+
 @media (min-width: 1440px) {
     /* Home: give the poster a tiny bit more breathing room */
     .poster-container {
