@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Academic from './pages/Academic';
 import FunPage from './pages/FunPage';
-import FunList from './pages/FunList';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
@@ -12,8 +12,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/academic" element={<Academic />} />
         <Route path="/fun" element={<FunPage />} />
-        <Route path="/fun/list" element={<FunList />} />
+        <Route path="/fun/list" element={<FunPage />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

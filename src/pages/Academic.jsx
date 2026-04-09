@@ -85,7 +85,7 @@ export default function Academic() {
     <div id="portfolio-view" style={{ display: 'block' }}>
       <div className="wallpaper"></div>
       <div className="menubar">
-        <span className="menubar-item menubar-btn" onClick={() => navigate('/')}>&#8249; Back to Home</span>
+        <button className="menubar-item menubar-btn" onClick={() => navigate('/')}>&#8249; Back to Home</button>
         <span className="menubar-right" id="menuTime"></span>
       </div>
       <div className="desktop">
@@ -95,34 +95,34 @@ export default function Academic() {
             <div className="imac-bezel-top"><div className="imac-camera"></div></div>
             <div className="imac-screen">
               <div className="desktop-icons">
-                <div className="desktop-icon" onClick={() => openFolder('analytics')}>
+                <button className="desktop-icon" onClick={() => openFolder('analytics')}>
                   <div className="folder-icon">
                     <svg viewBox="0 0 90 74"><path className="folder-tab" d="M4 12 L4 6 Q4 2 8 2 L30 2 Q34 2 36 6 L38 12 Z"/><rect className="folder-back" x="2" y="10" width="86" height="58" rx="6"/><rect className="folder-front" x="2" y="18" width="86" height="52" rx="6"/></svg>
                     <span className="folder-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round"><rect x="3" y="14" width="4" height="7" rx="1" fill="#2563eb" opacity="0.6"/><rect x="10" y="9" width="4" height="12" rx="1" fill="#2563eb" opacity="0.8"/><rect x="17" y="4" width="4" height="17" rx="1" fill="#2563eb"/></svg></span>
                   </div>
                   <div className="icon-label">Analytics<br/>Projects</div>
-                </div>
-                <div className="desktop-icon" onClick={() => openFolder('strategy')}>
+                </button>
+                <button className="desktop-icon" onClick={() => openFolder('strategy')}>
                   <div className="folder-icon">
                     <svg viewBox="0 0 90 74"><path className="folder-tab" d="M4 12 L4 6 Q4 2 8 2 L30 2 Q34 2 36 6 L38 12 Z"/><rect className="folder-back" x="2" y="10" width="86" height="58" rx="6"/><rect className="folder-front" x="2" y="18" width="86" height="52" rx="6"/></svg>
                     <span className="folder-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" fill="#7c3aed" opacity="0.3"/></svg></span>
                   </div>
                   <div className="icon-label">Strategy<br/>Projects</div>
-                </div>
-                <div className="desktop-icon" onClick={() => openFolder('extra')}>
+                </button>
+                <button className="desktop-icon" onClick={() => openFolder('extra')}>
                   <div className="folder-icon">
                     <svg viewBox="0 0 90 74"><path className="folder-tab" d="M4 12 L4 6 Q4 2 8 2 L30 2 Q34 2 36 6 L38 12 Z"/><rect className="folder-back" x="2" y="10" width="86" height="58" rx="6"/><rect className="folder-front" x="2" y="18" width="86" height="52" rx="6"/></svg>
                     <span className="folder-badge"><svg viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" strokeWidth="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
                   </div>
                   <div className="icon-label">Extra<br/>Work</div>
-                </div>
-                <div className="desktop-icon" onClick={() => openFolder('resources')}>
+                </button>
+                <button className="desktop-icon" onClick={() => openFolder('resources')}>
                   <div className="folder-icon">
                     <svg viewBox="0 0 90 74"><path className="folder-tab" d="M4 12 L4 6 Q4 2 8 2 L30 2 Q34 2 36 6 L38 12 Z"/><rect className="folder-back" x="2" y="10" width="86" height="58" rx="6"/><rect className="folder-front" x="2" y="18" width="86" height="52" rx="6"/></svg>
                     <span className="folder-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none"/></svg></span>
                   </div>
                   <div className="icon-label">Resources</div>
-                </div>
+                </button>
               </div>
             </div>
             <div className="imac-chin"></div>
@@ -140,19 +140,20 @@ export default function Academic() {
       <div className={`finder-window${showFinder ? ' show' : ''}`}>
         <div className="finder-toolbar">
           <div className="traffic-lights">
-            <div className="traffic-light tl-red" onClick={closeFolder}></div>
-            <div className="traffic-light tl-yellow"></div>
-            <div className="traffic-light tl-green"></div>
+            <button className="traffic-light tl-red" onClick={closeFolder} aria-label="Close"></button>
+            <button className="traffic-light tl-yellow" aria-label="Minimize"></button>
+            <button className="traffic-light tl-green" aria-label="Maximize"></button>
           </div>
           <div className="finder-nav">
-            <div
+            <button
               className="finder-nav-btn"
               style={{ opacity: currentView === 'project' ? '1' : '0.4' }}
               onClick={currentView === 'project' ? goBack : undefined}
+              aria-label="Back"
             >
               &#8249;
-            </div>
-            <div className="finder-nav-btn" style={{ opacity: '0.4' }}>&#8250;</div>
+            </button>
+            <button className="finder-nav-btn" style={{ opacity: '0.4' }} aria-label="Forward">&#8250;</button>
           </div>
           <div className="finder-title">{finderTitle}</div>
           <div style={{ width: '60px' }}></div>
@@ -181,30 +182,30 @@ export default function Academic() {
             </div>
           )}
           {currentView === 'project' && item && (
-            <div style={{ padding: '8px 6px 20px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '18px', marginBottom: '22px' }}>
-                <div style={{ width: '56px', height: '66px', flexShrink: 0, filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))' }}>
+            <div className="project-detail">
+              <div className="project-detail-header">
+                <div className="project-detail-icon">
                   {fileIconSVG(colors[0], colors[1])}
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: '18px', marginBottom: '6px', letterSpacing: '0.3px' }}>{item.name}</div>
-                  <div style={{ fontSize: '13px', color: 'var(--text-dim)', lineHeight: 1.6 }}>{item.desc}</div>
+                  <div className="project-detail-name">{item.name}</div>
+                  <div className="project-detail-desc">{item.desc}</div>
                 </div>
               </div>
-              <div style={{ borderTop: '1px solid var(--finder-border)', paddingTop: '16px' }}>
-                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--text-dim)', marginBottom: '12px', fontWeight: 600 }}>Open With &#8599;</div>
+              <div className="project-detail-links">
+                <div className="project-detail-links-label">Open With &#8599;</div>
                 {item.links.map((link, li) => (
                   <a
                     key={li}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 14px', borderRadius: '8px', textDecoration: 'none', color: 'var(--text)', marginBottom: '4px', border: '1px solid var(--finder-border)' }}
+                    className="project-link-row"
                   >
-                    <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: `linear-gradient(135deg,${colors[0]},${colors[1]})`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', color: 'white', fontWeight: 700 }}>&#8599;</div>
+                    <div className="project-link-icon" style={{ background: `linear-gradient(135deg,${colors[0]},${colors[1]})` }}>&#8599;</div>
                     <div>
-                      <div style={{ fontWeight: 600, fontSize: '13px' }}>{link.label}</div>
-                      <div style={{ fontSize: '10px', color: 'var(--text-dim)', marginTop: '2px' }}>Opens in new tab</div>
+                      <div className="project-link-label">{link.label}</div>
+                      <div className="project-link-sub">Opens in new tab</div>
                     </div>
                   </a>
                 ))}
