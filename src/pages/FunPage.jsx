@@ -14,13 +14,13 @@ export default function FunPage() {
 
     const funPopupTimer = setTimeout(() => {
       setShowFunPopup(true);
-    }, 4000);
+    }, 5000);
 
     rickrollTimer.current = setTimeout(() => {
       if (!funClicked.current) {
         setShowRickroll(true);
       }
-    }, 13000);
+    }, 15000);
 
     return () => {
       clearTimeout(funPopupTimer);

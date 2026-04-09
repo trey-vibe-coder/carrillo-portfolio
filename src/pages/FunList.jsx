@@ -7,8 +7,8 @@ export default function FunList() {
   const [showRickroll, setShowRickroll] = useState(false);
 
   useEffect(() => {
-    const funPopupTimer = setTimeout(() => setShowFunPopup(true), 4000);
-    const rickrollTimer = setTimeout(() => setShowRickroll(true), 13000);
+    const funPopupTimer = setTimeout(() => setShowFunPopup(true), 5000);
+    const rickrollTimer = setTimeout(() => setShowRickroll(true), 15000);
     return () => {
       clearTimeout(funPopupTimer);
       clearTimeout(rickrollTimer);

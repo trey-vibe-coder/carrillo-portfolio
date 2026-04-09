@@ -767,10 +767,18 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
    BREAKPOINT: ≥ 1440px (large desktop)
    ============================================================ */
 @media (min-width: 1024px) {
-    /* Fun: win95 popup — larger on desktop so it doesn't look tiny */
-    .win95-popup { max-width: 520px; }
-    .win95-text-content { font-size: 17px; padding: 22px; }
-    .win95-body { padding: 24px; gap: 22px; }
+    /* Fun: win95 popups — larger on desktop so they don't look tiny */
+    .win95-popup { max-width: 600px; }
+    .win95-text-content { font-size: 18px; padding: 26px; line-height: 2; }
+    .win95-body { padding: 28px; gap: 24px; }
+    .win95-btn { font-size: 15px; padding: 8px 28px; }
+    .win95-titlebar { font-size: 16px; padding: 5px 8px; }
+    .win95-rickroll { width: 460px; }
+    .rickroll-titlebar { font-size: 15px; padding: 5px 8px; }
+    .rickroll-body { padding: 28px 24px; gap: 18px; }
+    .rickroll-icon { font-size: 40px; }
+    .rickroll-msg { font-size: 17px; }
+    .rickroll-btn { font-size: 15px; padding: 8px 28px; }
 
     /* Fun list: retro window — more presence on desktop */
     .retro-window { max-width: 760px; }
