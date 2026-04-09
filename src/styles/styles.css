@@ -93,6 +93,21 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
 .btn-yellow { background: #FDE300; color: #000000; border: 2px solid #000; } .btn-yellow:hover { background: #e6cc00; }
 .btn-blue { background: #73B9FA; color: #000000; border: 2px solid #000; } .btn-blue:hover { background: #5aa3e6; }
 
+@keyframes github-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+  25%       { transform: translateX(-50%) translateY(-6px) rotate(-8deg); }
+  50%       { transform: translateX(-50%) translateY(-10px) rotate(0deg); }
+  75%       { transform: translateX(-50%) translateY(-6px) rotate(8deg); }
+}
+.github-icon-link {
+    animation: github-bounce 2s ease-in-out infinite;
+}
+.github-icon-link:hover {
+    animation: none;
+    transform: translateX(-50%) scale(1.2);
+    filter: drop-shadow(0 0 6px rgba(0,0,0,0.4));
+}
+
 /* === PORTFOLIO VIEW === */
 #portfolio-view {
     display: none; position: absolute; top: 0; left: 0;
