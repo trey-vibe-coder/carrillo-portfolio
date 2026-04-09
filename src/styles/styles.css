@@ -452,9 +452,9 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
 .course-pill { background: #f0f0f2; border: 1px solid #e0e0e2; border-radius: 16px; padding: 4px 11px; font-size: 11px; color: #555; }
 .course-pill-ms { background: #fff3eb; border: 1px solid #e8a87c; border-radius: 16px; padding: 4px 11px; font-size: 11px; color: #BF5700; font-weight: 600; }
 .about-contact-card { background-color: #111; color: #fff; width: 100%; border-radius: 12px; padding: 40px 20px; margin-top: 20px; }
-.about-contact-card h2 { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase; }
-.contact-role { font-size: 10px; color: #aaa; letter-spacing: 1px; margin-bottom: 5px; text-transform: uppercase; }
-.contact-email { color: #FDE300; font-size: 12px; font-weight: 700; text-decoration: none; display: block; margin-bottom: 20px; }
+.about-contact-card h2 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase; }
+.contact-role { font-size: 13px; color: #aaa; letter-spacing: 1px; margin-bottom: 5px; text-transform: uppercase; }
+.contact-email { color: #FDE300; font-size: 16px; font-weight: 700; text-decoration: none; display: block; margin-bottom: 20px; }
 .contact-email:hover { text-decoration: underline; }
 
 /* ============================================================

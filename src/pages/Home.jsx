@@ -48,7 +48,7 @@ export default function Home() {
               onClick={() => { handleNavClick(); navigate('/academic'); }}
               style={{ cursor: 'pointer' }}
             >
-              Academic Portfolio
+              Academic Projects
             </a>
             <a
               className="home-nav-btn btn-yellow"
