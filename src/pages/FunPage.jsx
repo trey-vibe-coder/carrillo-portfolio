@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function FunPage() {
   const navigate = useNavigate();
-  const [showFunPopup, setShowFunPopup] = useState(true);
+  const [showFunPopup, setShowFunPopup] = useState(false);
   const [showRickroll, setShowRickroll] = useState(false);
   const funClicked = useRef(false);
   const rickrollTimer = useRef(null);
@@ -12,13 +12,18 @@ export default function FunPage() {
     funClicked.current = false;
     setShowRickroll(false);
 
+    const funPopupTimer = setTimeout(() => {
+      setShowFunPopup(true);
+    }, 4000);
+
     rickrollTimer.current = setTimeout(() => {
       if (!funClicked.current) {
         setShowRickroll(true);
       }
-    }, 6000);
+    }, 13000);
 
     return () => {
+      clearTimeout(funPopupTimer);
       if (rickrollTimer.current) clearTimeout(rickrollTimer.current);
     };
   }, []);
@@ -46,10 +51,10 @@ export default function FunPage() {
           </div>
           <div className="win95-body">
             <div className="win95-text-content">
-              <span className="green-text">like cool shit?!</span> are you scrappy? email me at{' '}
+              <span className="green-text">like cool $hiz?!</span> are you scrappy? email me at{' '}
               <a href="mailto:scrappymagazine@yahoo.com" className="yellow-link">scrappymagazine@yahoo.com</a>{' '}
               and let&rsquo;s chat.{' '}
-              <a href="https://www.urbandictionary.com/define.php?term=scrappy" target="_blank" rel="noopener noreferrer" className="white-link">urban dictionary</a>{' '}
+              <a href="https://www.reddit.com/r/salesforce/comments/xvr23e/if_your_ceo_called_you_scrappy_would_you_take_it/" target="_blank" rel="noopener noreferrer" className="white-link">urban dictionary</a>{' '}
               <a href="https://www.google.com/search?q=scrappy+doo" target="_blank" rel="noopener noreferrer" className="white-link">scrappy</a>
             </div>
             <div className="win95-buttons">

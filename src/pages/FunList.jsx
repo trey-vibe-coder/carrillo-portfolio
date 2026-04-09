@@ -1,7 +1,19 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function FunList() {
   const navigate = useNavigate();
+  const [showFunPopup, setShowFunPopup] = useState(false);
+  const [showRickroll, setShowRickroll] = useState(false);
+
+  useEffect(() => {
+    const funPopupTimer = setTimeout(() => setShowFunPopup(true), 4000);
+    const rickrollTimer = setTimeout(() => setShowRickroll(true), 13000);
+    return () => {
+      clearTimeout(funPopupTimer);
+      clearTimeout(rickrollTimer);
+    };
+  }, []);
 
   return (
     <div id="fun-list-view" style={{ display: 'flex' }}>
@@ -42,6 +54,42 @@ export default function FunList() {
           </a>
         </div>
       </div>
+
+      {showFunPopup && (
+        <div className="win95-popup" id="funPopup">
+          <div className="win95-titlebar">
+            <span>System message</span>
+            <div className="win95-close-btn" onClick={() => setShowFunPopup(false)}>X</div>
+          </div>
+          <div className="win95-body">
+            <div className="win95-text-content">
+              <span className="green-text">like cool $hiz?!</span> are you scrappy? email me at{' '}
+              <a href="mailto:scrappymagazine@yahoo.com" className="yellow-link">scrappymagazine@yahoo.com</a>{' '}
+              and let&rsquo;s chat.{' '}
+              <a href="https://www.reddit.com/r/salesforce/comments/xvr23e/if_your_ceo_called_you_scrappy_would_you_take_it/" target="_blank" rel="noopener noreferrer" className="white-link">urban dictionary</a>{' '}
+              <a href="https://www.google.com/search?q=scrappy+doo" target="_blank" rel="noopener noreferrer" className="white-link">scrappy</a>
+            </div>
+            <div className="win95-buttons">
+              <button className="win95-btn" onClick={() => setShowFunPopup(false)}>Ok</button>
+              <button className="win95-btn" onClick={() => setShowFunPopup(false)}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showRickroll && (
+        <div className="win95-rickroll" id="rickrollPopup" style={{ display: 'flex' }}>
+          <div className="rickroll-titlebar">
+            <span>&#9888; Lucky.exe</span>
+            <div className="win95-close-btn" onClick={() => setShowRickroll(false)}>X</div>
+          </div>
+          <div className="rickroll-body">
+            <div className="rickroll-icon">&#127808; &#9733; &#127808;</div>
+            <div className="rickroll-msg">click here if you&rsquo;re feeling lucky :)</div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="rickroll-btn">I&rsquo;m Feeling Lucky</a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
