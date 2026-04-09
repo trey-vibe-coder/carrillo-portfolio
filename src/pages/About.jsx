@@ -1,33 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PHOTO_B64 } from '../assets/images';
 
 export default function About() {
   const navigate = useNavigate();
   const [coursesOpen, setCoursesOpen] = useState(false);
-  const [starSpin, setStarSpin] = useState(false);
   const [certsOpen, setCertsOpen] = useState(false);
-  const [certStarSpin, setCertStarSpin] = useState(false);
-  const starRef = useRef(null);
 
   function toggleCourses() {
     setCoursesOpen(prev => !prev);
-    setStarSpin(false);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => setStarSpin(true));
-    });
   }
 
   function toggleCerts() {
     setCertsOpen(prev => !prev);
-    setCertStarSpin(false);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => setCertStarSpin(true));
-    });
-  }
-
-  function handleStarAnimEnd() {
-    setStarSpin(false);
   }
 
   return (
@@ -53,11 +38,7 @@ export default function About() {
 
             <div className="cert-section">
               <div className="courses-toggle-row" onClick={toggleCerts}>
-                <span
-                  className={`courses-star-btn${certStarSpin ? ' spin-once' : ''}`}
-                  style={{ color: '#eb34c0' }}
-                  onAnimationEnd={() => setCertStarSpin(false)}
-                >&#9733;</span>
+                <span className="courses-star-btn" style={{ color: '#eb34c0' }}>&#9733;</span>
                 <span className="courses-toggle-label">Certifications</span>
               </div>
               <div className={`courses-container${certsOpen ? ' open' : ''}`}>
@@ -79,12 +60,7 @@ export default function About() {
               </div>
 
               <div className="courses-toggle-row" onClick={toggleCourses}>
-                <span
-                  ref={starRef}
-                  className={`courses-star-btn${starSpin ? ' spin-once' : ''}`}
-                  style={{ color: '#eb34c0' }}
-                  onAnimationEnd={handleStarAnimEnd}
-                >&#9733;</span>
+                <span className="courses-star-btn" style={{ color: '#eb34c0' }}>&#9733;</span>
                 <span className="courses-toggle-label">Coursework</span>
               </div>
               <div className={`courses-container${coursesOpen ? ' open' : ''}`}>
