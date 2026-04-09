@@ -31,8 +31,50 @@ export default function About() {
               <a href="https://undergraduates.utexas.edu/academics/bridging-disciplines-programs" target="_blank" rel="noopener noreferrer" className="pill-orange">BDP</a>
             </div>
             <div className="pill-group">
-              {['SQL','Python','R','R Studio','SPSS','Google Colab','Tableau','Excel','PowerPoint','Word','Google Sheets','Google Drive','Google Analytics (GA4)','Google Ads','Amazon Ads','SEO/SEM','HubSpot','Figma','Canva','Asana','Trello','Slack','Meltwater','GMS','Brandwatch','Sprout Social','Adobe Creative Suite','HTML','CSS','JavaScript','React','Node.js','Vite','Git','GitHub','Netlify','Google Stitch','Claude Code','Gemini','ChatGPT','Perplexity'].map(s => (
-                <div key={s} className="pill-grey">{s}</div>
+              {[
+                { name: 'SQL', url: 'https://www.w3schools.com/sql/' },
+                { name: 'Python', url: 'https://www.python.org' },
+                { name: 'R', url: 'https://www.r-project.org' },
+                { name: 'R Studio', url: 'https://posit.co/downloads/' },
+                { name: 'SPSS', url: 'https://www.ibm.com/products/spss' },
+                { name: 'Google Colab', url: 'https://colab.research.google.com' },
+                { name: 'Tableau', url: 'https://www.tableau.com' },
+                { name: 'Excel', url: 'https://www.microsoft.com/en-us/microsoft-365/excel' },
+                { name: 'PowerPoint', url: 'https://www.microsoft.com/en-us/microsoft-365/powerpoint' },
+                { name: 'Word', url: 'https://www.microsoft.com/en-us/microsoft-365/word' },
+                { name: 'Google Sheets', url: 'https://sheets.google.com' },
+                { name: 'Google Drive', url: 'https://drive.google.com' },
+                { name: 'Google Analytics (GA4)', url: 'https://analytics.google.com/' },
+                { name: 'Google Ads', url: 'https://ads.google.com' },
+                { name: 'Amazon Ads', url: 'https://advertising.amazon.com' },
+                { name: 'SEO/SEM', url: 'https://moz.com/learn/seo' },
+                { name: 'HubSpot', url: 'https://www.hubspot.com' },
+                { name: 'Figma', url: 'https://www.figma.com' },
+                { name: 'Canva', url: 'https://www.canva.com' },
+                { name: 'Asana', url: 'https://app.asana.com' },
+                { name: 'Trello', url: 'https://trello.com' },
+                { name: 'Slack', url: 'https://slack.com' },
+                { name: 'Meltwater', url: 'https://www.meltwater.com' },
+                { name: 'GMS', url: 'https://marketingplatform.google.com' },
+                { name: 'Brandwatch', url: 'https://www.brandwatch.com' },
+                { name: 'Sprout Social', url: 'https://sproutsocial.com' },
+                { name: 'Adobe Creative Suite', url: 'https://www.adobe.com/creativecloud.html' },
+                { name: 'HTML', url: 'https://www.w3schools.com/html/' },
+                { name: 'CSS', url: 'https://www.w3schools.com/css/' },
+                { name: 'JavaScript', url: 'https://www.w3schools.com/js/' },
+                { name: 'React', url: 'https://react.dev' },
+                { name: 'Node.js', url: 'https://nodejs.org' },
+                { name: 'Vite', url: 'https://vitejs.dev' },
+                { name: 'Git', url: 'https://git-scm.com' },
+                { name: 'GitHub', url: 'https://github.com' },
+                { name: 'Netlify', url: 'https://www.netlify.com' },
+                { name: 'Google Stitch', url: 'https://cloud.google.com/stitch' },
+                { name: 'Claude Code', url: 'https://www.anthropic.com/claude' },
+                { name: 'Gemini', url: 'https://gemini.google.com' },
+                { name: 'ChatGPT', url: 'https://chat.openai.com' },
+                { name: 'Perplexity', url: 'https://www.perplexity.ai' },
+              ].map(({ name, url }) => (
+                <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="pill-grey">{name}</a>
               ))}
             </div>
 

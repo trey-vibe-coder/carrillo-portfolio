@@ -402,8 +402,14 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
 .pill-orange:nth-child(2) { animation: pill-wave 0.55s ease-in-out 0.65s 2 both; }
 .pill-orange:nth-child(3) { animation: pill-wave 0.55s ease-in-out 0.9s 2 both; }
 .pill-orange:nth-child(4) { animation: pill-wave 0.55s ease-in-out 1.15s 2 both; }
-.pill-grey { border: 1.5px solid #BF5700; color: #BF5700; padding: 5px 12px; border-radius: 20px; font-size: 13px; background: #fff; }
-.about-bio { font-size: 15px; line-height: 1.8; color: #333; text-align: center; margin-top: 10px; }
+.pill-grey { border: 1.5px solid #BF5700; color: #BF5700; padding: 5px 12px; border-radius: 20px; font-size: 13px; background: #fff; display: inline-block; text-decoration: none; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.pill-grey:hover { background: #BF5700; color: #fff; }
+@keyframes pill-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-3px); } 40% { transform: translateX(3px); } 60% { transform: translateX(-2px); } 80% { transform: translateX(2px); } }
+.pill-grey:nth-child(-n+10) { animation: pill-shake 0.45s ease-in-out 0.6s 2 both; }
+.pill-grey:nth-child(n+11):nth-child(-n+20) { animation: pill-shake 0.45s ease-in-out 0.9s 2 both; }
+.pill-grey:nth-child(n+21):nth-child(-n+30) { animation: pill-shake 0.45s ease-in-out 1.2s 2 both; }
+.pill-grey:nth-child(n+31) { animation: pill-shake 0.45s ease-in-out 1.5s 2 both; }
+.about-bio { font-size: 15px; line-height: 1.8; color: #333; text-align: center; margin-top: 10px; font-weight: 700; }
 .about-stars { display: flex; justify-content: center; gap: 25px; margin-top: 10px; }
 .about-star-link { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #000; transition: transform 0.2s; }
 .about-star-link:hover { transform: scale(1.1); }
