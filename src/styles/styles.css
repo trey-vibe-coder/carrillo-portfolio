@@ -800,6 +800,21 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
     .courses-star-btn { font-size: 30px; }
     .about-star-link svg { width: 44px; }
     .about-star-link span { font-size: 15px; }
+
+    /* Cert cards — much more readable on desktop */
+    .cert-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+    .cert-card { padding: 16px 18px; gap: 14px; }
+    .cert-logo { width: 28px; height: 28px; }
+    .cert-name { font-size: 16px; }
+    .cert-issuer { font-size: 13px; }
+    .cert-expired-badge { font-size: 12px; padding: 3px 8px; }
+
+    /* Coursework pills & labels — scale up from tiny */
+    .course-group-label { font-size: 13px; letter-spacing: 2px; margin-bottom: 10px; }
+    .course-pill { font-size: 14px; padding: 6px 16px; }
+    .course-pill-ms { font-size: 14px; padding: 6px 16px; }
+    .course-pills { gap: 8px; }
+    .course-group { margin-bottom: 20px; }
 }
 
 @media (min-width: 1440px) {
