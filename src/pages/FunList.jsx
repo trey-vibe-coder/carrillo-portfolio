@@ -71,7 +71,6 @@ export default function FunList() {
             </div>
             <div className="win95-buttons">
               <button className="win95-btn" onClick={() => setShowFunPopup(false)}>Ok</button>
-              <button className="win95-btn" onClick={() => setShowFunPopup(false)}>Cancel</button>
             </div>
           </div>
         </div>
