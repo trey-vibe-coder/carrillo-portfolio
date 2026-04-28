@@ -107,6 +107,6 @@ export const contact = {
 
 export const links = {
   linkedin: 'https://www.linkedin.com/in/angeltreycarrillo/',
-  resume: 'https://docs.google.com/document/d/1osHT61BwnqNl9a6ivZ_F-_lX6jmwxiI6czylxosOR3Q/edit?usp=sharing',
+  resume: 'https://drive.google.com/file/d/1QGckh_xOPsZ8DE-q_czcPtEgG_RrcHXs/view?usp=sharing',
   github: 'https://github.com/trey-vibe-coder',
 };

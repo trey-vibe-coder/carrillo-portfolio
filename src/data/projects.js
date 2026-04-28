@@ -37,7 +37,7 @@ export const projects = {
     label: 'Resources',
     items: [
       { name: 'LinkedIn', desc: 'Connect with me on LinkedIn.', links: [{ label: 'Open LinkedIn', url: 'https://www.linkedin.com/in/angeltreycarrillo/' }] },
-      { name: 'Resume', desc: 'View my current resume.', links: [{ label: 'Open Resume', url: 'https://docs.google.com/document/d/1osHT61BwnqNl9a6ivZ_F-_lX6jmwxiI6czylxosOR3Q/edit?usp=sharing' }] }
+      { name: 'Resume', desc: 'View my current resume.', links: [{ label: 'Open Resume', url: 'https://drive.google.com/file/d/1QGckh_xOPsZ8DE-q_czcPtEgG_RrcHXs/view?usp=sharing' }] }
     ]
   }
 };
