@@ -102,22 +102,24 @@
     .wordmark.trey     { font-size: 184px; animation: word-trey     8s ease-in-out infinite; }
     .wordmark.carrillo { font-size: 120px; animation: word-carrillo 8s ease-in-out infinite; }
 
+    /* Smoother crossfades: ~10% fade segments so names dissolve, not snap. */
     @keyframes word-angel {
       0%   { opacity: 1; }
-      25%  { opacity: 1; }
-      30%  { opacity: 0; }
-      95%  { opacity: 0; }
+      17%  { opacity: 1; }
+      27%  { opacity: 0; }
+      83%  { opacity: 0; }
+      93%  { opacity: 1; }
       100% { opacity: 1; }
     }
     @keyframes word-trey {
-      0%, 25%   { opacity: 0; }
-      30%, 70%  { opacity: 1; }
-      75%, 100% { opacity: 0; }
+      0%, 17%   { opacity: 0; }
+      27%, 60%  { opacity: 1; }
+      70%, 100% { opacity: 0; }
     }
     @keyframes word-carrillo {
-      0%, 70%   { opacity: 0; }
-      75%, 95%  { opacity: 1; }
-      100%      { opacity: 0; }
+      0%, 60%   { opacity: 0; }
+      70%, 83%  { opacity: 1; }
+      93%, 100% { opacity: 0; }
     }
 
     /* Stars sit BEHIND wordmark */
@@ -147,68 +149,55 @@
       animation-delay: -4s; /* offset by half-loop */
     }
 
-    /* Pink corner star: small drift, strong "breath" pulse (two breaths per 8s loop). */
+    /* Bloom, not orbit: tiny drift, single peak per loop, scale carries the motion. */
     @keyframes pop-big-tl {
-      0%, 100% { transform: translate(50px, 20px) scale(0.55) rotate(0deg);   opacity: 0.75; }
-      20%      { transform: translate(28px, 10px) scale(1.20) rotate(70deg);  opacity: 1; }
-      40%      { transform: translate(40px, 16px) scale(0.65) rotate(140deg); opacity: 0.85; }
-      60%      { transform: translate(22px, 8px)  scale(1.30) rotate(210deg); opacity: 1; }
-      80%      { transform: translate(45px, 18px) scale(0.70) rotate(280deg); opacity: 0.95; }
+      0%, 100% { transform: translate(14px, 6px) scale(0.45) rotate(0deg);   opacity: 0.55; }
+      35%      { transform: translate(6px, 2px)  scale(1.10) rotate(70deg);  opacity: 1; }
+      50%      { transform: translate(0, 0)      scale(1.45) rotate(120deg); opacity: 1; }
+      65%      { transform: translate(6px, 2px)  scale(1.10) rotate(170deg); opacity: 1; }
     }
-    /* Cyan corner star: mirrored. */
     @keyframes pop-big-br {
-      0%, 100% { transform: translate(-50px, -20px) scale(0.55) rotate(0deg);    opacity: 0.75; }
-      20%      { transform: translate(-28px, -10px) scale(1.20) rotate(-70deg);  opacity: 1; }
-      40%      { transform: translate(-40px, -16px) scale(0.65) rotate(-140deg); opacity: 0.85; }
-      60%      { transform: translate(-22px, -8px)  scale(1.30) rotate(-210deg); opacity: 1; }
-      80%      { transform: translate(-45px, -18px) scale(0.70) rotate(-280deg); opacity: 0.95; }
+      0%, 100% { transform: translate(-14px, -6px) scale(0.45) rotate(0deg);    opacity: 0.55; }
+      35%      { transform: translate(-6px, -2px)  scale(1.10) rotate(-70deg);  opacity: 1; }
+      50%      { transform: translate(0, 0)        scale(1.45) rotate(-120deg); opacity: 1; }
+      65%      { transform: translate(-6px, -2px)  scale(1.10) rotate(-170deg); opacity: 1; }
     }
 
     /* ──────────────────────────────────────────
        SMALLER FILLER STARS (faster pops, no outline)
        ──────────────────────────────────────── */
-    .s1 { top: 18px;   left: 220px;  width: 38px; height: 38px; animation: pop-a 3.4s ease-in-out infinite; animation-delay: -1.2s; }
-    .s2 { top: 28px;   right: 130px; width: 32px; height: 32px; animation: pop-b 3.0s ease-in-out infinite; animation-delay: -0.6s; }
-    .s3 { bottom: 22px;left: 220px;  width: 36px; height: 36px; animation: pop-c 3.6s ease-in-out infinite; animation-delay: -2.0s; }
-    .s4 { bottom: 30px;right: 150px; width: 30px; height: 30px; animation: pop-d 3.2s ease-in-out infinite; animation-delay: -1.6s; }
-    .s5 { top: 50%;    left: 8px;    width: 26px; height: 26px; animation: pop-e 2.8s ease-in-out infinite; animation-delay: -0.8s; }
-    .s6 { top: 50%;    right: 8px;   width: 30px; height: 30px; animation: pop-f 3.2s ease-in-out infinite; animation-delay: -2.2s; }
+    /* Slower loops, staggered so blooms don't all peak at once. */
+    .s1 { top: 18px;   left: 220px;  width: 38px; height: 38px; animation: pop-a 6.0s ease-in-out infinite; animation-delay: -2.0s; }
+    .s2 { top: 28px;   right: 130px; width: 32px; height: 32px; animation: pop-b 6.5s ease-in-out infinite; animation-delay: -1.0s; }
+    .s3 { bottom: 22px;left: 220px;  width: 36px; height: 36px; animation: pop-c 7.0s ease-in-out infinite; animation-delay: -3.5s; }
+    .s4 { bottom: 30px;right: 150px; width: 30px; height: 30px; animation: pop-d 6.2s ease-in-out infinite; animation-delay: -2.8s; }
+    .s5 { top: 50%;    left: 8px;    width: 26px; height: 26px; animation: pop-e 5.8s ease-in-out infinite; animation-delay: -1.5s; }
+    .s6 { top: 50%;    right: 8px;   width: 30px; height: 30px; animation: pop-f 6.5s ease-in-out infinite; animation-delay: -4.0s; }
 
+    /* Bloom keyframes: small drift, big scale, fade in/out. One bloom per loop. */
     @keyframes pop-a {
-      0%, 100% { transform: translate(50px, 70px)   scale(0) rotate(0deg);   opacity: 0; }
-      18%      { transform: translate(25px, 35px)   scale(0.7) rotate(120deg); opacity: 1; }
-      50%      { transform: translate(0, 0)         scale(1) rotate(220deg);  opacity: 1; }
-      82%      { transform: translate(25px, 35px)   scale(0.7) rotate(320deg); opacity: 0.7; }
+      0%, 100% { transform: translate(10px, 14px)  scale(0.2) rotate(0deg);   opacity: 0; }
+      50%      { transform: translate(0, 0)        scale(1.25) rotate(180deg); opacity: 1; }
     }
     @keyframes pop-b {
-      0%, 100% { transform: translate(-40px, 65px)  scale(0) rotate(0deg);    opacity: 0; }
-      18%      { transform: translate(-20px, 32px)  scale(0.7) rotate(-100deg);opacity: 1; }
-      50%      { transform: translate(0, 0)         scale(1) rotate(-200deg); opacity: 1; }
-      82%      { transform: translate(-20px, 32px)  scale(0.7) rotate(-300deg);opacity: 0.7; }
+      0%, 100% { transform: translate(-10px, 12px) scale(0.2) rotate(0deg);    opacity: 0; }
+      50%      { transform: translate(0, 0)        scale(1.25) rotate(-180deg); opacity: 1; }
     }
     @keyframes pop-c {
-      0%, 100% { transform: translate(40px, -65px)  scale(0) rotate(0deg);   opacity: 0; }
-      18%      { transform: translate(20px, -32px)  scale(0.7) rotate(140deg);opacity: 1; }
-      50%      { transform: translate(0, 0)         scale(1) rotate(240deg); opacity: 1; }
-      82%      { transform: translate(20px, -32px)  scale(0.7) rotate(340deg);opacity: 0.7; }
+      0%, 100% { transform: translate(10px, -12px) scale(0.2) rotate(0deg);   opacity: 0; }
+      50%      { transform: translate(0, 0)        scale(1.25) rotate(180deg); opacity: 1; }
     }
     @keyframes pop-d {
-      0%, 100% { transform: translate(-50px, -60px) scale(0) rotate(0deg);   opacity: 0; }
-      18%      { transform: translate(-25px, -30px) scale(0.7) rotate(-120deg);opacity: 1; }
-      50%      { transform: translate(0, 0)         scale(1) rotate(-220deg);opacity: 1; }
-      82%      { transform: translate(-25px, -30px) scale(0.7) rotate(-320deg);opacity: 0.7; }
+      0%, 100% { transform: translate(-12px, -12px) scale(0.2) rotate(0deg);    opacity: 0; }
+      50%      { transform: translate(0, 0)         scale(1.25) rotate(-180deg); opacity: 1; }
     }
     @keyframes pop-e {
-      0%, 100% { transform: translate(140px, 0)     scale(0) rotate(0deg);    opacity: 0; }
-      18%      { transform: translate(70px, 0)      scale(0.7) rotate(180deg); opacity: 1; }
-      50%      { transform: translate(0, 0)         scale(1) rotate(300deg);  opacity: 1; }
-      82%      { transform: translate(70px, 0)      scale(0.7) rotate(420deg); opacity: 0.7; }
+      0%, 100% { transform: translate(14px, 0)  scale(0.2) rotate(0deg);   opacity: 0; }
+      50%      { transform: translate(0, 0)     scale(1.25) rotate(180deg); opacity: 1; }
     }
     @keyframes pop-f {
-      0%, 100% { transform: translate(-140px, 0)    scale(0) rotate(0deg);    opacity: 0; }
-      18%      { transform: translate(-70px, 0)     scale(0.7) rotate(-180deg);opacity: 1; }
-      50%      { transform: translate(0, 0)         scale(1) rotate(-300deg); opacity: 1; }
-      82%      { transform: translate(-70px, 0)     scale(0.7) rotate(-420deg);opacity: 0.7; }
+      0%, 100% { transform: translate(-14px, 0) scale(0.2) rotate(0deg);    opacity: 0; }
+      50%      { transform: translate(0, 0)     scale(1.25) rotate(-180deg); opacity: 1; }
     }
 
     /* ──────────────────────────────────────────
