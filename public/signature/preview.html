@@ -89,13 +89,35 @@
       top: 50%;
       transform: translate(-50%, -50%);
       font-family: 'Skrappa Reasonable Italic', sans-serif;
-      font-size: 184px;
       line-height: 1;
       color: var(--black);
       z-index: 10;
       white-space: nowrap;
       letter-spacing: -2px;
       user-select: none;
+      opacity: 0;
+    }
+    /* Three names cycle: Angel → Trey → Carrillo. Trey holds longest. */
+    .wordmark.angel    { font-size: 156px; animation: word-angel    8s ease-in-out infinite; }
+    .wordmark.trey     { font-size: 184px; animation: word-trey     8s ease-in-out infinite; }
+    .wordmark.carrillo { font-size: 120px; animation: word-carrillo 8s ease-in-out infinite; }
+
+    @keyframes word-angel {
+      0%   { opacity: 1; }
+      25%  { opacity: 1; }
+      30%  { opacity: 0; }
+      95%  { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes word-trey {
+      0%, 25%   { opacity: 0; }
+      30%, 70%  { opacity: 1; }
+      75%, 100% { opacity: 0; }
+    }
+    @keyframes word-carrillo {
+      0%, 70%   { opacity: 0; }
+      75%, 95%  { opacity: 1; }
+      100%      { opacity: 0; }
     }
 
     /* Stars sit BEHIND wordmark */
@@ -125,22 +147,21 @@
       animation-delay: -4s; /* offset by half-loop */
     }
 
-    /* Big star starts behind the top-left corner of "Trey" (~190,60 from top-left of canvas)
-       and drifts outward to top-left of canvas. */
+    /* Pink corner star: small drift, strong "breath" pulse (two breaths per 8s loop). */
     @keyframes pop-big-tl {
-      0%, 100% { transform: translate(190px, 80px) scale(0) rotate(0deg);   opacity: 0; }
-      14%      { transform: translate(120px, 50px) scale(0.5) rotate(60deg); opacity: 0.9; }
-      45%      { transform: translate(0, 0)        scale(1)   rotate(140deg);opacity: 1; }
-      55%      { transform: translate(0, 0)        scale(1)   rotate(180deg);opacity: 1; }
-      86%      { transform: translate(120px, 50px) scale(0.5) rotate(280deg);opacity: 0.7; }
+      0%, 100% { transform: translate(50px, 20px) scale(0.55) rotate(0deg);   opacity: 0.75; }
+      20%      { transform: translate(28px, 10px) scale(1.20) rotate(70deg);  opacity: 1; }
+      40%      { transform: translate(40px, 16px) scale(0.65) rotate(140deg); opacity: 0.85; }
+      60%      { transform: translate(22px, 8px)  scale(1.30) rotate(210deg); opacity: 1; }
+      80%      { transform: translate(45px, 18px) scale(0.70) rotate(280deg); opacity: 0.95; }
     }
-    /* Big star starts behind the bottom-right corner of "Trey" and drifts outward to bottom-right. */
+    /* Cyan corner star: mirrored. */
     @keyframes pop-big-br {
-      0%, 100% { transform: translate(-190px, -80px) scale(0) rotate(0deg);   opacity: 0; }
-      14%      { transform: translate(-120px, -50px) scale(0.5) rotate(-60deg); opacity: 0.9; }
-      45%      { transform: translate(0, 0)          scale(1)   rotate(-140deg);opacity: 1; }
-      55%      { transform: translate(0, 0)          scale(1)   rotate(-180deg);opacity: 1; }
-      86%      { transform: translate(-120px, -50px) scale(0.5) rotate(-280deg);opacity: 0.7; }
+      0%, 100% { transform: translate(-50px, -20px) scale(0.55) rotate(0deg);    opacity: 0.75; }
+      20%      { transform: translate(-28px, -10px) scale(1.20) rotate(-70deg);  opacity: 1; }
+      40%      { transform: translate(-40px, -16px) scale(0.65) rotate(-140deg); opacity: 0.85; }
+      60%      { transform: translate(-22px, -8px)  scale(1.30) rotate(-210deg); opacity: 1; }
+      80%      { transform: translate(-45px, -18px) scale(0.70) rotate(-280deg); opacity: 0.95; }
     }
 
     /* ──────────────────────────────────────────
@@ -228,7 +249,7 @@
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43 Z" fill="#FFD23F"/></svg>
       </div>
       <div class="star s2">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#B8E62F"/></svg>
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#3090B8"/></svg>
       </div>
       <div class="star s3">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43 Z" fill="#FF6B1A"/></svg>
@@ -237,14 +258,16 @@
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#E84A2E"/></svg>
       </div>
       <div class="star s5">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43 Z" fill="#B8E62F"/></svg>
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43 Z" fill="#6E74AE"/></svg>
       </div>
       <div class="star s6">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#FFD23F"/></svg>
       </div>
 
-      <!-- Wordmark on top -->
-      <div class="wordmark" id="wordmark">Trey</div>
+      <!-- Three wordmarks cycle: Angel → Trey → Carrillo -->
+      <div class="wordmark angel">Angel</div>
+      <div class="wordmark trey">Trey</div>
+      <div class="wordmark carrillo">Carrillo</div>
   </div>
 
   <div class="preview-label">In context · how it appears in Gmail</div>
@@ -254,7 +277,7 @@
     </div>
     <div class="info">
       <div class="name">Angel "Trey" Carrillo</div>
-      <div class="role">UT McCombs · MS Marketing 2026</div>
+      <div class="role">M.S. Marketing '26, UT McCombs · B.S. Advertising '24, UT Moody</div>
       <div class="links">
         <a href="mailto:2021trey@gmail.com">2021trey@gmail.com</a>
         <span class="sep">·</span>
