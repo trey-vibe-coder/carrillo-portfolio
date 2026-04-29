@@ -11,8 +11,8 @@ const URL = 'file://' + path.join(__dirname, 'preview.html');
 
 const WIDTH = 600;
 const HEIGHT = 220;
-const LOOP_MS = 8000;
-const FPS = 20;
+const LOOP_MS = 12000;
+const FPS = 15;
 const TOTAL_FRAMES = (LOOP_MS / 1000) * FPS;
 
 await rm(FRAMES_DIR, { recursive: true, force: true });
@@ -23,7 +23,7 @@ const browser = await puppeteer.launch({
   args: ['--no-sandbox', '--disable-web-security'],
 });
 const page = await browser.newPage();
-await page.setViewport({ width: WIDTH, height: HEIGHT, deviceScaleFactor: 2 });
+await page.setViewport({ width: WIDTH, height: HEIGHT, deviceScaleFactor: 1 });
 await page.goto(URL, { waitUntil: 'networkidle0' });
 
 await page.evaluate(() => {
