@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trey — Signature Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Local Hurka fonts */
+    @font-face {
+      font-family: 'Skrappa Wide';
+      src: url('./fonts/WTSkrappaTRIAL-Wide.otf') format('opentype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Skrappa Generous';
+      src: url('./fonts/WTSkrappaTRIAL-Generous.otf') format('opentype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Skrappa Reasonable';
+      src: url('./fonts/WTSkrappaTRIAL-Reasonable.otf') format('opentype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Skrappa Reasonable Italic';
+      src: url('./fonts/WTSkrappaTRIAL-ReasonableIta.otf') format('opentype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Skrappa Reasonable Italic Tight';
+      src: url('./fonts/WTSkrappaTRIAL-ReasonableItTi.otf') format('opentype');
+      font-display: swap;
+    }
+
+    :root {
+      --pink:  #FF2E7E;
+      --lime:  #B8E62F;
+      --cyan:  #00C8E0;
+      --orange:#FF6B1A;
+      --red:   #E84A2E;
+      --gold:  #FFD23F;
+      --white: #ffffff;
+      --black: #000000;
+      --frame: #2A2A2A;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f5f7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      padding: 40px 20px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .preview-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    /* ──────────────────────────────────────────
+       SIGNATURE CARD
+       ──────────────────────────────────────── */
+    .sig-card {
+      position: relative;
+      width: 600px;
+      height: 220px;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .wordmark {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Skrappa Reasonable Italic', sans-serif;
+      font-size: 184px;
+      line-height: 1;
+      color: var(--black);
+      z-index: 10;
+      white-space: nowrap;
+      letter-spacing: -2px;
+      user-select: none;
+    }
+
+    /* Stars sit BEHIND wordmark */
+    .star {
+      position: absolute;
+      z-index: 1;
+      transform-origin: center;
+      will-change: transform, opacity;
+    }
+    .star svg { display: block; width: 100%; height: 100%; }
+
+    /* ──────────────────────────────────────────
+       TWO BIG CORNER STARS (anchors)
+       Larger, slower (8s), out of phase so they
+       never peak at the same time.
+       Pop from the corners OF Trey outward.
+       ──────────────────────────────────────── */
+    .big-tl {
+      top: -18px; left: -18px;
+      width: 124px; height: 124px;
+      animation: pop-big-tl 8s ease-in-out infinite;
+    }
+    .big-br {
+      bottom: -18px; right: -18px;
+      width: 124px; height: 124px;
+      animation: pop-big-br 8s ease-in-out infinite;
+      animation-delay: -4s; /* offset by half-loop */
+    }
+
+    /* Big star starts behind the top-left corner of "Trey" (~190,60 from top-left of canvas)
+       and drifts outward to top-left of canvas. */
+    @keyframes pop-big-tl {
+      0%, 100% { transform: translate(190px, 80px) scale(0) rotate(0deg);   opacity: 0; }
+      14%      { transform: translate(120px, 50px) scale(0.5) rotate(60deg); opacity: 0.9; }
+      45%      { transform: translate(0, 0)        scale(1)   rotate(140deg);opacity: 1; }
+      55%      { transform: translate(0, 0)        scale(1)   rotate(180deg);opacity: 1; }
+      86%      { transform: translate(120px, 50px) scale(0.5) rotate(280deg);opacity: 0.7; }
+    }
+    /* Big star starts behind the bottom-right corner of "Trey" and drifts outward to bottom-right. */
+    @keyframes pop-big-br {
+      0%, 100% { transform: translate(-190px, -80px) scale(0) rotate(0deg);   opacity: 0; }
+      14%      { transform: translate(-120px, -50px) scale(0.5) rotate(-60deg); opacity: 0.9; }
+      45%      { transform: translate(0, 0)          scale(1)   rotate(-140deg);opacity: 1; }
+      55%      { transform: translate(0, 0)          scale(1)   rotate(-180deg);opacity: 1; }
+      86%      { transform: translate(-120px, -50px) scale(0.5) rotate(-280deg);opacity: 0.7; }
+    }
+
+    /* ──────────────────────────────────────────
+       SMALLER FILLER STARS (faster pops, no outline)
+       ──────────────────────────────────────── */
+    .s1 { top: 18px;   left: 220px;  width: 38px; height: 38px; animation: pop-a 3.4s ease-in-out infinite; animation-delay: -1.2s; }
+    .s2 { top: 28px;   right: 130px; width: 32px; height: 32px; animation: pop-b 3.0s ease-in-out infinite; animation-delay: -0.6s; }
+    .s3 { bottom: 22px;left: 220px;  width: 36px; height: 36px; animation: pop-c 3.6s ease-in-out infinite; animation-delay: -2.0s; }
+    .s4 { bottom: 30px;right: 150px; width: 30px; height: 30px; animation: pop-d 3.2s ease-in-out infinite; animation-delay: -1.6s; }
+    .s5 { top: 50%;    left: 8px;    width: 26px; height: 26px; animation: pop-e 2.8s ease-in-out infinite; animation-delay: -0.8s; }
+    .s6 { top: 50%;    right: 8px;   width: 30px; height: 30px; animation: pop-f 3.2s ease-in-out infinite; animation-delay: -2.2s; }
+
+    @keyframes pop-a {
+      0%, 100% { transform: translate(50px, 70px)   scale(0) rotate(0deg);   opacity: 0; }
+      18%      { transform: translate(25px, 35px)   scale(0.7) rotate(120deg); opacity: 1; }
+      50%      { transform: translate(0, 0)         scale(1) rotate(220deg);  opacity: 1; }
+      82%      { transform: translate(25px, 35px)   scale(0.7) rotate(320deg); opacity: 0.7; }
+    }
+    @keyframes pop-b {
+      0%, 100% { transform: translate(-40px, 65px)  scale(0) rotate(0deg);    opacity: 0; }
+      18%      { transform: translate(-20px, 32px)  scale(0.7) rotate(-100deg);opacity: 1; }
+      50%      { transform: translate(0, 0)         scale(1) rotate(-200deg); opacity: 1; }
+      82%      { transform: translate(-20px, 32px)  scale(0.7) rotate(-300deg);opacity: 0.7; }
+    }
+    @keyframes pop-c {
+      0%, 100% { transform: translate(40px, -65px)  scale(0) rotate(0deg);   opacity: 0; }
+      18%      { transform: translate(20px, -32px)  scale(0.7) rotate(140deg);opacity: 1; }
+      50%      { transform: translate(0, 0)         scale(1) rotate(240deg); opacity: 1; }
+      82%      { transform: translate(20px, -32px)  scale(0.7) rotate(340deg);opacity: 0.7; }
+    }
+    @keyframes pop-d {
+      0%, 100% { transform: translate(-50px, -60px) scale(0) rotate(0deg);   opacity: 0; }
+      18%      { transform: translate(-25px, -30px) scale(0.7) rotate(-120deg);opacity: 1; }
+      50%      { transform: translate(0, 0)         scale(1) rotate(-220deg);opacity: 1; }
+      82%      { transform: translate(-25px, -30px) scale(0.7) rotate(-320deg);opacity: 0.7; }
+    }
+    @keyframes pop-e {
+      0%, 100% { transform: translate(140px, 0)     scale(0) rotate(0deg);    opacity: 0; }
+      18%      { transform: translate(70px, 0)      scale(0.7) rotate(180deg); opacity: 1; }
+      50%      { transform: translate(0, 0)         scale(1) rotate(300deg);  opacity: 1; }
+      82%      { transform: translate(70px, 0)      scale(0.7) rotate(420deg); opacity: 0.7; }
+    }
+    @keyframes pop-f {
+      0%, 100% { transform: translate(-140px, 0)    scale(0) rotate(0deg);    opacity: 0; }
+      18%      { transform: translate(-70px, 0)     scale(0.7) rotate(-180deg);opacity: 1; }
+      50%      { transform: translate(0, 0)         scale(1) rotate(-300deg); opacity: 1; }
+      82%      { transform: translate(-70px, 0)     scale(0.7) rotate(-420deg);opacity: 0.7; }
+    }
+
+    /* ──────────────────────────────────────────
+       FULL SIGNATURE BLOCK
+       ──────────────────────────────────────── */
+    .sig-block {
+      width: 600px;
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      padding: 0;
+    }
+    .sig-block .gif-slot { width: 600px; height: 220px; }
+    .sig-block .info { padding: 12px 0 0 0; display: flex; flex-direction: column; gap: 2px; font-size: 13px; line-height: 1.5; }
+    .sig-block .name { font-weight: 700; font-size: 14px; letter-spacing: 0.2px; }
+    .sig-block .role { color: #555; font-size: 13px; }
+    .sig-block .links { margin-top: 4px; font-size: 13px; }
+    .sig-block .links a { color: var(--black); text-decoration: none; }
+    .sig-block .links a.linked { border-bottom: 1px solid var(--black); }
+    .sig-block .sep { color: #aaa; padding: 0 6px; }
+
+  </style>
+</head>
+<body>
+  <div class="preview-label">Signature card · 600 × 220 (this becomes the GIF)</div>
+
+  <div class="sig-card" id="card">
+      <!-- BIG corner anchor stars (no outline) -->
+      <div class="star big-tl">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#FF2E7E"/></svg>
+      </div>
+      <div class="star big-br">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#00C8E0"/></svg>
+      </div>
+
+      <!-- Smaller filler stars (no outline) -->
+      <div class="star s1">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43 Z" fill="#FFD23F"/></svg>
+      </div>
+      <div class="star s2">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#B8E62F"/></svg>
+      </div>
+      <div class="star s3">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43 Z" fill="#FF6B1A"/></svg>
+      </div>
+      <div class="star s4">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#E84A2E"/></svg>
+      </div>
+      <div class="star s5">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43 Z" fill="#B8E62F"/></svg>
+      </div>
+      <div class="star s6">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#FFD23F"/></svg>
+      </div>
+
+      <!-- Wordmark on top -->
+      <div class="wordmark" id="wordmark">Trey</div>
+  </div>
+
+  <div class="preview-label">In context · how it appears in Gmail</div>
+  <div class="sig-block">
+    <div class="gif-slot">
+      <div style="width:100%;height:100%;background:#fafafa;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;color:#999;letter-spacing:2px;">[ ANIMATED GIF GOES HERE ]</div>
+    </div>
+    <div class="info">
+      <div class="name">Angel "Trey" Carrillo</div>
+      <div class="role">UT McCombs · MS Marketing 2026</div>
+      <div class="links">
+        <a href="mailto:2021trey@gmail.com">2021trey@gmail.com</a>
+        <span class="sep">·</span>
+        <a href="https://carrillo-portfolio.netlify.app" class="linked">Portfolio</a>
+        <span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/treycarrillo/" class="linked">LinkedIn</a>
+        <span class="sep">·</span>
+        <a href="tel:9403898594">940.389.8594</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
