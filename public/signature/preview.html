@@ -87,39 +87,22 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
       font-family: 'Skrappa Reasonable Italic', sans-serif;
+      font-size: 184px;
       line-height: 1;
       color: var(--black);
       z-index: 10;
       white-space: nowrap;
       letter-spacing: -2px;
       user-select: none;
-      opacity: 0;
+      animation: trey-bloom 4.5s ease-in-out infinite;
     }
-    /* Three names cycle: Angel → Trey → Carrillo. Trey holds longest. */
-    .wordmark.angel    { font-size: 156px; animation: word-angel    8s ease-in-out infinite; }
-    .wordmark.trey     { font-size: 184px; animation: word-trey     8s ease-in-out infinite; }
-    .wordmark.carrillo { font-size: 120px; animation: word-carrillo 8s ease-in-out infinite; }
-
-    /* Smoother crossfades: ~10% fade segments so names dissolve, not snap. */
-    @keyframes word-angel {
-      0%   { opacity: 1; }
-      17%  { opacity: 1; }
-      27%  { opacity: 0; }
-      83%  { opacity: 0; }
-      93%  { opacity: 1; }
-      100% { opacity: 1; }
-    }
-    @keyframes word-trey {
-      0%, 17%   { opacity: 0; }
-      27%, 60%  { opacity: 1; }
-      70%, 100% { opacity: 0; }
-    }
-    @keyframes word-carrillo {
-      0%, 60%   { opacity: 0; }
-      70%, 83%  { opacity: 1; }
-      93%, 100% { opacity: 0; }
+    /* Two breaths per loop: bigger, smaller, bigger, smaller. */
+    @keyframes trey-bloom {
+      0%, 100% { transform: translate(-50%, -50%) scale(0.94); }
+      25%      { transform: translate(-50%, -50%) scale(1.08); }
+      50%      { transform: translate(-50%, -50%) scale(0.94); }
+      75%      { transform: translate(-50%, -50%) scale(1.08); }
     }
 
     /* Stars sit BEHIND wordmark */
@@ -140,64 +123,76 @@
     .big-tl {
       top: -18px; left: -18px;
       width: 124px; height: 124px;
-      animation: pop-big-tl 8s ease-in-out infinite;
+      animation: pop-big-tl 5.0s ease-in-out infinite;
     }
     .big-br {
       bottom: -18px; right: -18px;
       width: 124px; height: 124px;
-      animation: pop-big-br 8s ease-in-out infinite;
-      animation-delay: -4s; /* offset by half-loop */
+      animation: pop-big-br 5.5s ease-in-out infinite;
+      animation-delay: -2.5s;
     }
 
-    /* Bloom, not orbit: tiny drift, single peak per loop, scale carries the motion. */
+    /* Two breaths per loop + small arc path. Pink TL and cyan BR take mirrored paths. */
     @keyframes pop-big-tl {
-      0%, 100% { transform: translate(14px, 6px) scale(0.45) rotate(0deg);   opacity: 0.55; }
-      35%      { transform: translate(6px, 2px)  scale(1.10) rotate(70deg);  opacity: 1; }
-      50%      { transform: translate(0, 0)      scale(1.45) rotate(120deg); opacity: 1; }
-      65%      { transform: translate(6px, 2px)  scale(1.10) rotate(170deg); opacity: 1; }
+      0%, 100% { transform: translate(10px, 4px)  scale(0.55) rotate(0deg);   opacity: 0.7; }
+      25%      { transform: translate(-2px, 8px)  scale(1.35) rotate(90deg);  opacity: 1; }
+      50%      { transform: translate(-8px, -2px) scale(0.65) rotate(180deg); opacity: 0.85; }
+      75%      { transform: translate(4px, -8px)  scale(1.35) rotate(270deg); opacity: 1; }
     }
     @keyframes pop-big-br {
-      0%, 100% { transform: translate(-14px, -6px) scale(0.45) rotate(0deg);    opacity: 0.55; }
-      35%      { transform: translate(-6px, -2px)  scale(1.10) rotate(-70deg);  opacity: 1; }
-      50%      { transform: translate(0, 0)        scale(1.45) rotate(-120deg); opacity: 1; }
-      65%      { transform: translate(-6px, -2px)  scale(1.10) rotate(-170deg); opacity: 1; }
+      0%, 100% { transform: translate(-10px, -4px) scale(0.55) rotate(0deg);    opacity: 0.7; }
+      25%      { transform: translate(2px, -8px)   scale(1.35) rotate(-90deg);  opacity: 1; }
+      50%      { transform: translate(8px, 2px)    scale(0.65) rotate(-180deg); opacity: 0.85; }
+      75%      { transform: translate(-4px, 8px)   scale(1.35) rotate(-270deg); opacity: 1; }
     }
 
     /* ──────────────────────────────────────────
        SMALLER FILLER STARS (faster pops, no outline)
        ──────────────────────────────────────── */
-    /* Slower loops, staggered so blooms don't all peak at once. */
-    .s1 { top: 18px;   left: 220px;  width: 38px; height: 38px; animation: pop-a 6.0s ease-in-out infinite; animation-delay: -2.0s; }
-    .s2 { top: 28px;   right: 130px; width: 32px; height: 32px; animation: pop-b 6.5s ease-in-out infinite; animation-delay: -1.0s; }
-    .s3 { bottom: 22px;left: 220px;  width: 36px; height: 36px; animation: pop-c 7.0s ease-in-out infinite; animation-delay: -3.5s; }
-    .s4 { bottom: 30px;right: 150px; width: 30px; height: 30px; animation: pop-d 6.2s ease-in-out infinite; animation-delay: -2.8s; }
-    .s5 { top: 50%;    left: 8px;    width: 26px; height: 26px; animation: pop-e 5.8s ease-in-out infinite; animation-delay: -1.5s; }
-    .s6 { top: 50%;    right: 8px;   width: 30px; height: 30px; animation: pop-f 6.5s ease-in-out infinite; animation-delay: -4.0s; }
+    /* Each star: 2 breaths per loop + unique drift path. Varied loop lengths so they don't sync. */
+    .s1 { top: 18px;   left: 220px;  width: 38px; height: 38px; animation: pop-a 4.5s ease-in-out infinite; animation-delay: -1.5s; }
+    .s2 { top: 28px;   right: 130px; width: 32px; height: 32px; animation: pop-b 5.0s ease-in-out infinite; animation-delay: -0.8s; }
+    .s3 { bottom: 22px;left: 220px;  width: 36px; height: 36px; animation: pop-c 5.5s ease-in-out infinite; animation-delay: -3.0s; }
+    .s4 { bottom: 30px;right: 150px; width: 30px; height: 30px; animation: pop-d 4.8s ease-in-out infinite; animation-delay: -2.3s; }
+    .s5 { top: 50%;    left: 8px;    width: 26px; height: 26px; animation: pop-e 4.2s ease-in-out infinite; animation-delay: -1.0s; }
+    .s6 { top: 50%;    right: 8px;   width: 30px; height: 30px; animation: pop-f 5.3s ease-in-out infinite; animation-delay: -3.5s; }
 
-    /* Bloom keyframes: small drift, big scale, fade in/out. One bloom per loop. */
+    /* Each pop-* traces a small unique path while breathing twice. */
     @keyframes pop-a {
-      0%, 100% { transform: translate(10px, 14px)  scale(0.2) rotate(0deg);   opacity: 0; }
-      50%      { transform: translate(0, 0)        scale(1.25) rotate(180deg); opacity: 1; }
+      0%, 100% { transform: translate(0, 0)         scale(0.4) rotate(0deg);    opacity: 0.5; }
+      25%      { transform: translate(8px, -4px)    scale(1.20) rotate(120deg); opacity: 1; }
+      50%      { transform: translate(0, 8px)       scale(0.6) rotate(220deg);  opacity: 0.8; }
+      75%      { transform: translate(-8px, -4px)   scale(1.20) rotate(340deg); opacity: 1; }
     }
     @keyframes pop-b {
-      0%, 100% { transform: translate(-10px, 12px) scale(0.2) rotate(0deg);    opacity: 0; }
-      50%      { transform: translate(0, 0)        scale(1.25) rotate(-180deg); opacity: 1; }
+      0%, 100% { transform: translate(0, 0)         scale(0.4) rotate(0deg);     opacity: 0.5; }
+      25%      { transform: translate(-7px, 5px)    scale(1.20) rotate(-100deg); opacity: 1; }
+      50%      { transform: translate(0, -7px)      scale(0.6) rotate(-200deg);  opacity: 0.8; }
+      75%      { transform: translate(7px, 5px)     scale(1.20) rotate(-320deg); opacity: 1; }
     }
     @keyframes pop-c {
-      0%, 100% { transform: translate(10px, -12px) scale(0.2) rotate(0deg);   opacity: 0; }
-      50%      { transform: translate(0, 0)        scale(1.25) rotate(180deg); opacity: 1; }
+      0%, 100% { transform: translate(0, 0)         scale(0.4) rotate(0deg);    opacity: 0.5; }
+      25%      { transform: translate(6px, 6px)     scale(1.20) rotate(140deg); opacity: 1; }
+      50%      { transform: translate(-7px, 0)      scale(0.6) rotate(240deg);  opacity: 0.8; }
+      75%      { transform: translate(6px, -6px)    scale(1.20) rotate(360deg); opacity: 1; }
     }
     @keyframes pop-d {
-      0%, 100% { transform: translate(-12px, -12px) scale(0.2) rotate(0deg);    opacity: 0; }
-      50%      { transform: translate(0, 0)         scale(1.25) rotate(-180deg); opacity: 1; }
+      0%, 100% { transform: translate(0, 0)         scale(0.4) rotate(0deg);     opacity: 0.5; }
+      25%      { transform: translate(-6px, -7px)   scale(1.20) rotate(-130deg); opacity: 1; }
+      50%      { transform: translate(7px, 0)       scale(0.6) rotate(-220deg);  opacity: 0.8; }
+      75%      { transform: translate(-6px, 7px)    scale(1.20) rotate(-340deg); opacity: 1; }
     }
     @keyframes pop-e {
-      0%, 100% { transform: translate(14px, 0)  scale(0.2) rotate(0deg);   opacity: 0; }
-      50%      { transform: translate(0, 0)     scale(1.25) rotate(180deg); opacity: 1; }
+      0%, 100% { transform: translate(0, 0)         scale(0.4) rotate(0deg);    opacity: 0.5; }
+      25%      { transform: translate(8px, -5px)    scale(1.20) rotate(160deg); opacity: 1; }
+      50%      { transform: translate(0, 7px)       scale(0.6) rotate(280deg);  opacity: 0.8; }
+      75%      { transform: translate(8px, 5px)     scale(1.20) rotate(400deg); opacity: 1; }
     }
     @keyframes pop-f {
-      0%, 100% { transform: translate(-14px, 0) scale(0.2) rotate(0deg);    opacity: 0; }
-      50%      { transform: translate(0, 0)     scale(1.25) rotate(-180deg); opacity: 1; }
+      0%, 100% { transform: translate(0, 0)         scale(0.4) rotate(0deg);     opacity: 0.5; }
+      25%      { transform: translate(-8px, 5px)    scale(1.20) rotate(-160deg); opacity: 1; }
+      50%      { transform: translate(0, -7px)      scale(0.6) rotate(-280deg);  opacity: 0.8; }
+      75%      { transform: translate(-8px, -5px)   scale(1.20) rotate(-400deg); opacity: 1; }
     }
 
     /* ──────────────────────────────────────────
@@ -253,10 +248,8 @@
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,4 61,38 96,38 67,59 78,94 50,72 22,94 33,59 4,38 39,38" fill="#FFD23F"/></svg>
       </div>
 
-      <!-- Three wordmarks cycle: Angel → Trey → Carrillo -->
-      <div class="wordmark angel">Angel</div>
-      <div class="wordmark trey">Trey</div>
-      <div class="wordmark carrillo">Carrillo</div>
+      <!-- Wordmark: Trey, breathing -->
+      <div class="wordmark">Trey</div>
   </div>
 
   <div class="preview-label">In context · how it appears in Gmail</div>
