@@ -86,6 +86,12 @@ export default function Home() {
                 Trey
               </button>
             </div>
+            <button
+              className="home-nav-btn btn-teal"
+              onClick={() => { handleNavClick(); navigate('/audyence'); }}
+            >
+              Fit Map
+            </button>
           </div>
         </div>
       </div>
