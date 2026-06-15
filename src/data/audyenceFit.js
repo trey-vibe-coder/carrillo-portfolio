@@ -43,7 +43,7 @@ export const REQS = [
       {
         fn: 'Marketing',
         lead: 'Trained, certified, client-tested.',
-        body: 'McCombs M.S. in Marketing, HubSpot certified, AIO/GEO strategy for Frozen Garden, a live DTC client.',
+        body: 'McCombs M.S. in Marketing, HubSpot certified, AIO/GEO strategy for Frozen Garden, a DTC client.',
       },
       {
         fn: 'Customer Success',
@@ -95,7 +95,7 @@ export const REQS = [
     help: "My model is spotting the repetitive manual step and turning it into an agent. At Epicor I turned a monitoring slog into a reusable format the marketing and PR teams ran with.",
     built: ['Epicor insight system', '/open + /pipeline', "Troot's Brain"],
     receipts: [
-      'Reusable insight format that ran 30% over median engagement',
+      'Reusable insight format fed a campaign 30% over median engagement',
       'Daily ops drafts follow-ups and reminders automatically',
     ],
   },
@@ -140,7 +140,7 @@ export const REQS = [
     built: ['Rocket Fuel A/B analysis', 'GA4 attribution', 'Epicor campaign'],
     receipts: [
       '588,102-row A/B: 43% incremental lift, time-of-day optimization',
-      'Epicor insight format that ran 30% over median engagement',
+      'Epicor insight format fed a campaign that ran 30% over median engagement',
     ],
   },
   {
@@ -199,7 +199,7 @@ export const REQS = [
     built: ['treyleases (shipped solo)', 'Demandbase capstone', "Troot's Brain"],
     receipts: [
       'Shipped, running systems: a live GTM engine, an ETL pipeline, a production model',
-      "The posting says apply even if you don't meet every qualification",
+      'January to June: first serious AI use to operating the whole stack',
     ],
   },
   {
