@@ -931,15 +931,15 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
 }
 
 .fm-shell {
-  max-width: 1180px;
+  max-width: 1660px;
   margin: 0 auto;
-  padding: 56px 32px 80px;
+  padding: 52px clamp(24px, 4vw, 72px) 88px;
 }
 
 .fm-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
-  gap: 40px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 48px;
   align-items: start;
 }
 
