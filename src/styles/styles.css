@@ -149,6 +149,7 @@ body { width: 100vw; min-height: 100vh; overflow-x: hidden; font-family: 'Inter'
 .btn-white { background: #ffffff; color: #000000; border: 2px solid #000; } .btn-white:hover { background: #e0e0e0; }
 .btn-yellow { background: var(--color-yellow); color: #000000; border: 2px solid #000; } .btn-yellow:hover { background: color-mix(in srgb, var(--color-yellow) 85%, black); }
 .btn-blue { background: var(--color-blue-light); color: #000000; border: 2px solid #000; } .btn-blue:hover { background: color-mix(in srgb, var(--color-blue-light) 85%, black); }
+.btn-teal { background: #54B6A1; color: #000000; border: 2px solid #000; } .btn-teal:hover { background: color-mix(in srgb, #54B6A1 85%, black); }
 
 @keyframes github-bounce {
   0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
